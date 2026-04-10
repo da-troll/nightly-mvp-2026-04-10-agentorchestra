@@ -4,8 +4,9 @@ import { Bot } from 'lucide-react';
 import type { NodeData } from '../types';
 
 const MODELS = [
-  { id: 'claude-haiku-4-5-20251001', label: 'Haiku (fast)' },
-  { id: 'claude-sonnet-4-6', label: 'Sonnet (smart)' },
+  { id: 'gpt-4o-mini', label: 'GPT-4o mini (fast)' },
+  { id: 'gpt-4o', label: 'GPT-4o (smart)' },
+  { id: 'o4-mini', label: 'o4-mini (reasoning)' },
 ];
 
 export function AgentNode({ id, data, selected }: NodeProps<Node<NodeData>>) {

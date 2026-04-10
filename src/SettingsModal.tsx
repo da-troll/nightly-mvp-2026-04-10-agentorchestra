@@ -44,17 +44,17 @@ export function SettingsModal({ onClose }: Props) {
           </button>
         </div>
 
-        <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 6 }}>ANTHROPIC API KEY</div>
+        <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 6 }}>OPENAI API KEY</div>
         <input
           type="text"
           value={key}
           onChange={e => { setKey(e.target.value); setSaved(false); }}
-          placeholder="sk-ant-..."
+          placeholder="sk-..."
           style={{ marginBottom: 8 }}
           autoFocus
         />
         <div style={{ fontSize: 11, color: '#4a4a6a', marginBottom: 16, lineHeight: 1.5 }}>
-          Your key is stored in localStorage and never sent anywhere except directly to Anthropic's API.
+          Your key is stored in localStorage and never sent anywhere except directly to OpenAI's API.
         </div>
 
         <div style={{ display: 'flex', gap: 8 }}>

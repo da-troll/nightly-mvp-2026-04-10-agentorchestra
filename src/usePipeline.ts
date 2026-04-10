@@ -109,7 +109,7 @@ export function usePipeline() {
         const userMsg = upstream || '(no input)';
 
         try {
-          const result = await callClaude(prompt, userMsg, model ?? 'claude-haiku-4-5-20251001');
+          const result = await callClaude(prompt, userMsg, model ?? 'gpt-4o-mini');
           outputs.set(nodeId, result);
           setNodeStatus(nodeId, 'done', result);
         } catch (err: unknown) {

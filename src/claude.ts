@@ -1,4 +1,4 @@
-const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
+const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 
 export function getApiKey(): string {
   return localStorage.getItem('ao_api_key') || '';
@@ -11,25 +11,25 @@ export function setApiKey(key: string) {
 export async function callClaude(
   systemPrompt: string,
   userMessage: string,
-  model = 'claude-haiku-4-5-20251001',
+  model = 'gpt-4o-mini',
   apiKey?: string,
 ): Promise<string> {
   const key = apiKey || getApiKey();
-  if (!key) throw new Error('No Claude API key configured. Click ⚙ to add your key.');
+  if (!key) throw new Error('No OpenAI API key configured. Click ⚙ to add your key.');
 
-  const res = await fetch(CLAUDE_API_URL, {
+  const res = await fetch(OPENAI_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': key,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
+      'Authorization': `Bearer ${key}`,
     },
     body: JSON.stringify({
       model,
       max_tokens: 1024,
-      system: systemPrompt || 'You are a helpful assistant.',
-      messages: [{ role: 'user', content: userMessage }],
+      messages: [
+        { role: 'system', content: systemPrompt || 'You are a helpful assistant.' },
+        { role: 'user', content: userMessage },
+      ],
     }),
   });
 
@@ -39,5 +39,5 @@ export async function callClaude(
   }
 
   const data = await res.json();
-  return (data.content?.[0]?.text ?? '').trim();
+  return (data.choices?.[0]?.message?.content ?? '').trim();
 }

@@ -35,7 +35,7 @@ const EXAMPLE_NODES: Node<NodeData>[] = [
     data: {
       kind: 'agent', label: 'Summariser',
       systemPrompt: 'You are a concise summariser. Write a 3-sentence summary of the given topic.',
-      model: 'claude-haiku-4-5-20251001',
+      model: 'gpt-4o-mini',
     },
   },
   {
@@ -45,7 +45,7 @@ const EXAMPLE_NODES: Node<NodeData>[] = [
     data: {
       kind: 'agent', label: 'Critic',
       systemPrompt: 'You are a sharp analyst. List 3 counterarguments or risks about the given topic.',
-      model: 'claude-haiku-4-5-20251001',
+      model: 'gpt-4o-mini',
     },
   },
   {
@@ -93,7 +93,7 @@ export default function App() {
     const id = `n${++nodeCounter}`;
     const defaults: Record<string, Partial<NodeData>> = {
       input:     { label: 'Input', value: '' },
-      agent:     { label: 'Agent', systemPrompt: 'You are a helpful assistant.', model: 'claude-haiku-4-5-20251001' },
+      agent:     { label: 'Agent', systemPrompt: 'You are a helpful assistant.', model: 'gpt-4o-mini' },
       transform: { label: 'Transform', transformPrompt: '' },
       output:    { label: 'Output' },
     };
